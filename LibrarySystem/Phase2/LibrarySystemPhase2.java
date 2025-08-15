@@ -1,4 +1,4 @@
-package LibrarySystem;
+package LibrarySystem.Phase2;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LibrarySystemPhase2 {
@@ -61,7 +61,7 @@ public class LibrarySystemPhase2 {
 			   isBookFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   LinearSearch(libraryBooks, bookToSearch, isBookFound);
+		   isBookFound = LinearSearch(libraryBooks, bookToSearch);
 		   //------------------------------------------------------------
 		   if (isBookFound == true)
 		       System.out.println("The book is found");
@@ -75,7 +75,7 @@ public class LibrarySystemPhase2 {
 			   isMemberFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   LinearSearch(libraryMembers, memberToSearch, isMemberFound);
+		   isMemberFound = LinearSearch(libraryMembers, memberToSearch);
 		   //------------------------------------------------------------
 		   if (isMemberFound == true)
 		       System.out.println("The member is found");
@@ -100,11 +100,12 @@ public class LibrarySystemPhase2 {
 		}
 	}
 
-	public static void LinearSearch(ArrayList<String> list, String elementToSearch, Boolean isFound){
+	public static Boolean LinearSearch(ArrayList<String> list, String elementToSearch){
 		for (int index = 0; index < list.size(); index++) {
 			if (list.get(index).equals(elementToSearch)) {
-				isFound = true;
+				return true;
 			}
 		}
+		return false;
 	}
 }

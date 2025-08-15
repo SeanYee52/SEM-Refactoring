@@ -1,4 +1,4 @@
-package LibrarySystem;
+package LibrarySystem.Phase1;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LibrarySystemPhase1 {
