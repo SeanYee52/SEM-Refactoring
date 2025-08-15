@@ -24,7 +24,7 @@ public class LibrarySystemPhase1 {
 				System.out.println(counter);
 			}
 		 //bubble sort--------------------------------------------------
-		   boolean isBooksSorted = false;
+		   Boolean isBooksSorted = false;
 		    String tempBook = null;
 		    while(!isBooksSorted) {
 		        isBooksSorted = true;
