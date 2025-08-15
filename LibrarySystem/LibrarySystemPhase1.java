@@ -4,110 +4,112 @@ import java.util.Scanner;
 public class LibrarySystemPhase1 {
 	public static void main(String[] args) {		
 		//This code is to add books to the library and sort them
-		ArrayList<String> LB = new ArrayList<String>(); // an array list of library books
-		String nbt; //A variable to add a new book title
-		String elementToSearch = null;
-		Boolean Found;
+		ArrayList<String> libraryBooks = new ArrayList<String>();
+		String newBookTitle;
+		String bookToSearch = null;
+		String memberToSearch = null;
+		Boolean isBookFound;
+		Boolean isMemberFound;
 		System.out.println("Create the book list by entering the book titles book by book");		
 		System.out.println("Enter a book title to be added to the library");
 		Scanner input = new Scanner(System.in);		
-		nbt = input.next();		
-		while (!(nbt.equals("end"))) {		
-			LB.add(nbt);
+		newBookTitle = input.next();		
+		while (!(newBookTitle.equals("end"))) {		
+			libraryBooks.add(newBookTitle);
 			System.out.print("Enter a book title to be added to the library");
-			nbt = input.next();			
+			newBookTitle = input.next();			
 			}
 		System.out.println("The books in the library before sorting are: ");
-		   for(String counter: LB){
+		   for(String counter: libraryBooks){
 				System.out.println(counter);
 			}
 		 //bubble sort--------------------------------------------------
-		   boolean sorted = false;
-		    String temp = null;
-		    while(!sorted) {
-		        sorted = true;
-		        for (int i = 0; i < LB.size() - 1; i++) {		           
-		        	if((LB.get(i)).compareToIgnoreCase(LB.get(i+1))>0) {
-		                temp = LB.get(i);
-		                LB.set(i,LB.get(i+1));
-		                LB.set(i+1,temp);
-		                sorted = false;
+		   boolean isBooksSorted = false;
+		    String tempBook = null;
+		    while(!isBooksSorted) {
+		        isBooksSorted = true;
+		        for (int i = 0; i < libraryBooks.size() - 1; i++) {		           
+		        	if((libraryBooks.get(i)).compareToIgnoreCase(libraryBooks.get(i+1))>0) {
+		                tempBook = libraryBooks.get(i);
+		                libraryBooks.set(i,libraryBooks.get(i+1));
+		                libraryBooks.set(i+1,tempBook);
+		                isBooksSorted = false;
 		            }
 		        }
 		    }
 		 //-------------------------------------------------------
 		 System.out.println("The books in the library after sorting are: ");
-		   for(String counter: LB){
+		   for(String counter: libraryBooks){
 				System.out.println(counter);
 			}
 		  
 		 //This code is to add members to the library and sort them
-			ArrayList<String> LM = new ArrayList<String>();// an array list of library members
-			String nMn;//A variable to add a new member name			
+			ArrayList<String> libraryMembers = new ArrayList<String>();
+			String newMemberName;
 			System.out.println("Create the members list by entering the member names one by one");		
 			System.out.println("Enter a member name to be added to the library system");
 			input = new Scanner(System.in);		
-			nMn = input.next();		
-			while (!(nMn.equals("end"))) {		
-				LM.add(nMn);
+			newMemberName = input.next();		
+			while (!(newMemberName.equals("end"))) {		
+				libraryMembers.add(newMemberName);
 				System.out.print("Enter a memer name to be added to the library");
-				nMn = input.next();			
+				newMemberName = input.next();			
 				}
 			System.out.println("The members in the library before sorting are: ");
-			   for(String counter: LM){
+			   for(String counter: libraryMembers){
 					System.out.println(counter);
 				}
 			 //bubble sort--------------------------------------------------
-			   sorted = false;
-			   temp = null;
-			    while(!sorted) {
-			        sorted = true;
-			        for (int i = 0; i < LM.size() - 1; i++) {		           
-			        	if((LM.get(i)).compareToIgnoreCase(LM.get(i+1))>0) {
-			                temp = LM.get(i);
-			                LM.set(i,LM.get(i+1));
-			                LM.set(i+1,temp);
-			                sorted = false;
+			   Boolean isMembersSorted = false;
+			   String tempMember = null;
+			    while(!isMembersSorted) {
+			        isMembersSorted = true;
+			        for (int i = 0; i < libraryMembers.size() - 1; i++) {		           
+			        	if((libraryMembers.get(i)).compareToIgnoreCase(libraryMembers.get(i+1))>0) {
+			                tempMember = libraryMembers.get(i);
+			                libraryMembers.set(i,libraryMembers.get(i+1));
+			                libraryMembers.set(i+1,tempMember);
+			                isMembersSorted = false;
 			            }
 			        }
 			    }
 			 //-------------------------------------------------------
 			 System.out.println("The members in the library after sorting are: ");
-			   for(String counter: LM){
+			   for(String counter: libraryMembers){
 					System.out.println(counter);
 				}		   
 			  			   
 			 //This code is to search for a specific book
 		     System.out.println("Enter a book title to search for:");
-			   elementToSearch = input.next();	
-			   Found = false;	
+			   bookToSearch = input.next();	
+			   isBookFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   for (int index = 0; index < LB.size(); index++) {
-		        if (LB.get(index).equals(elementToSearch)) 
-		        	Found = true;     
+		   for (int index = 0; index < libraryBooks.size(); index++) {
+		        if (libraryBooks.get(index).equals(bookToSearch)) 
+		        	isBookFound = true;     
 		    }
 		   //------------------------------------------------------------
-		   if (Found == true)
+		   if (isBookFound == true)
 		       System.out.println("The book is found");
-		   else if (Found == false)
+		   else if (isBookFound == false)
 				   System.out.println("The book is not found");
 		   //--------------------------------------------------------------
 		   
 		 //This code is to search for a specific member
 		     System.out.println("Enter a member name to search for:");
-			   elementToSearch = input.next();	
-			   Found = false;	
+			   memberToSearch = input.next();	
+			   isMemberFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   for (int index = 0; index < LM.size(); index++) {
-		        if (LM.get(index).equals(elementToSearch)) 
-		        	Found = true;     
+		   for (int index = 0; index < libraryMembers.size(); index++) {
+		        if (libraryMembers.get(index).equals(memberToSearch)) 
+		        	isMemberFound = true;     
 		    }
 		   //------------------------------------------------------------
-		   if (Found == true)
+		   if (isMemberFound == true)
 		       System.out.println("The member is found");
-		   else if (Found == false)
+		   else if (isMemberFound == false)
 				   System.out.println("The member is not found");
 		   //--------------------------------------------------------------
 	}
