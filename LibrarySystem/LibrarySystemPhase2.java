@@ -1,7 +1,7 @@
 package LibrarySystem;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class LibrarySystemPhase1 {
+public class LibrarySystemPhase2 {
 	public static void main(String[] args) {		
 		//This code is to add books to the library and sort them
 		ArrayList<String> libraryBooks = new ArrayList<String>();
@@ -24,19 +24,7 @@ public class LibrarySystemPhase1 {
 				System.out.println(counter);
 			}
 		 //bubble sort--------------------------------------------------
-		   Boolean isBooksSorted = false;
-		    String tempBook = null;
-		    while(!isBooksSorted) {
-		        isBooksSorted = true;
-		        for (int i = 0; i < libraryBooks.size() - 1; i++) {		           
-		        	if((libraryBooks.get(i)).compareToIgnoreCase(libraryBooks.get(i+1))>0) {
-		                tempBook = libraryBooks.get(i);
-		                libraryBooks.set(i,libraryBooks.get(i+1));
-		                libraryBooks.set(i+1,tempBook);
-		                isBooksSorted = false;
-		            }
-		        }
-		    }
+			SortElements(libraryBooks);
 		 //-------------------------------------------------------
 		 System.out.println("The books in the library after sorting are: ");
 		   for(String counter: libraryBooks){
@@ -60,19 +48,7 @@ public class LibrarySystemPhase1 {
 					System.out.println(counter);
 				}
 			 //bubble sort--------------------------------------------------
-			   Boolean isMembersSorted = false;
-			   String tempMember = null;
-			    while(!isMembersSorted) {
-			        isMembersSorted = true;
-			        for (int i = 0; i < libraryMembers.size() - 1; i++) {		           
-			        	if((libraryMembers.get(i)).compareToIgnoreCase(libraryMembers.get(i+1))>0) {
-			                tempMember = libraryMembers.get(i);
-			                libraryMembers.set(i,libraryMembers.get(i+1));
-			                libraryMembers.set(i+1,tempMember);
-			                isMembersSorted = false;
-			            }
-			        }
-			    }
+			   SortElements(libraryMembers);
 			 //-------------------------------------------------------
 			 System.out.println("The members in the library after sorting are: ");
 			   for(String counter: libraryMembers){
@@ -85,10 +61,7 @@ public class LibrarySystemPhase1 {
 			   isBookFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   for (int index = 0; index < libraryBooks.size(); index++) {
-		        if (libraryBooks.get(index).equals(bookToSearch)) 
-		        	isBookFound = true;     
-		    }
+		   LinearSearch(libraryBooks, bookToSearch, isBookFound);
 		   //------------------------------------------------------------
 		   if (isBookFound == true)
 		       System.out.println("The book is found");
@@ -102,15 +75,36 @@ public class LibrarySystemPhase1 {
 			   isMemberFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   for (int index = 0; index < libraryMembers.size(); index++) {
-		        if (libraryMembers.get(index).equals(memberToSearch)) 
-		        	isMemberFound = true;     
-		    }
+		   LinearSearch(libraryMembers, memberToSearch, isMemberFound);
 		   //------------------------------------------------------------
 		   if (isMemberFound == true)
 		       System.out.println("The member is found");
 		   else if (isMemberFound == false)
 				   System.out.println("The member is not found");
 		   //--------------------------------------------------------------
+	}
+
+	public static void SortElements(ArrayList<String> list) {
+		boolean sorted = false;
+		String temp = null;
+		while(!sorted) {
+			sorted = true;
+			for (int i = 0; i < list.size() - 1; i++) {		           
+				if((list.get(i)).compareToIgnoreCase(list.get(i+1))>0) {
+					temp = list.get(i);
+					list.set(i, list.get(i+1));
+					list.set(i+1, temp);
+					sorted = false;
+				}
+			}
+		}
+	}
+
+	public static void LinearSearch(ArrayList<String> list, String elementToSearch, Boolean isFound){
+		for (int index = 0; index < list.size(); index++) {
+			if (list.get(index).equals(elementToSearch)) {
+				isFound = true;
+			}
+		}
 	}
 }
