@@ -7,20 +7,20 @@ interface Sortable {
 }
 
 class Book implements Sortable {
-    private String title;
-	
-    public Book(String title) {
-        this.title = title;
-    }     
+	private String title;
 
-    public String getTitle() {
-        return title;
-    }    
-        
+	public Book(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
 	public void setTitle(String title) {
-        this.title = title;
+		this.title = title;
     }
-	
+
 	@Override
 	public String getSortKey() {
 		return this.title;
@@ -28,20 +28,20 @@ class Book implements Sortable {
 }
 
 class Member implements Sortable {
-    private String name;
+	private String name;
 
-    public Member(String name) {
-        this.name = name;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
+	public Member(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	public void setName(String name) {
-        this.name = name;
-    }
-	
+		this.name = name;
+	}
+
 	@Override
 	public String getSortKey() {
 		return this.name;
@@ -75,24 +75,23 @@ public class LibrarySystemPhase4 {
 		return false;
 	}
 
-	public static void main(String[] args) {		
-
+	public static void main(String[] args) {
 		// This code is to add books to the library and sort them
 		ArrayList<Book> libraryBooks = new ArrayList<Book>();
 		String newBookTitle;
-		String bookToSearch = null; 
+		String bookToSearch = null;
 		String memberToSearch = null;
 		Boolean isBookFound;
 		Boolean isMemberFound;
-		System.out.println("Create the book list by entering the book titles book by book");		
+		System.out.println("Create the book list by entering the book titles book by book");
 		System.out.println("Enter a book title to be added to the library");
-		Scanner input = new Scanner(System.in);		
-		newBookTitle = input.next();		
+		Scanner input = new Scanner(System.in);
+		newBookTitle = input.next();
 
 		while (!(newBookTitle.equals("end"))) {
 			libraryBooks.add(new Book(newBookTitle));
 			System.out.print("Enter a book title to be added to the library");
-			newBookTitle = input.next();			
+			newBookTitle = input.next();
 		}
 
 		System.out.println("The books in the library before sorting are: ");
@@ -104,25 +103,27 @@ public class LibrarySystemPhase4 {
 		sortItems(libraryBooks);
 
 		System.out.println("The books in the library after sorting are: ");
-		for(Book counter: libraryBooks){
+
+		for (Book counter : libraryBooks) {
 			System.out.println(counter.getTitle());
 		}
 
 		// This code is to add members to the library and sort them
 		ArrayList<Member> libraryMembers = new ArrayList<Member>();
 		String newMemberName;
-		System.out.println("Create the members list by entering the member names one by one");		
+		System.out.println("Create the members list by entering the member names one by one");
 		System.out.println("Enter a member name to be added to the library system");
-		newMemberName = input.next();		
+		newMemberName = input.next();
 
-		while (!(newMemberName.equals("end"))) {		
+		while (!(newMemberName.equals("end"))) {
 			libraryMembers.add(new Member(newMemberName));
 			System.out.print("Enter a member name to be added to the library");
-			newMemberName = input.next();			
+			newMemberName = input.next();
 		}
 
 		System.out.println("The members in the library before sorting are: ");
-		for(Member counter: libraryMembers){
+
+		for (Member counter : libraryMembers) {
 			System.out.println(counter.getName());
 		}
 
@@ -130,28 +131,30 @@ public class LibrarySystemPhase4 {
 		sortItems(libraryMembers);
 
 		System.out.println("The members in the library after sorting are: ");
-		for(Member counter: libraryMembers){
+
+		for (Member counter : libraryMembers) {
 			System.out.println(counter.getName());
-		}		   
-					
+		}
+
 		// This code is to search for a specific book
 		System.out.println("Enter a book title to search for:");
-		bookToSearch = input.next();	
-		isBookFound = false;	
-			
+		bookToSearch = input.next();
+		isBookFound = false;
+
 		// Using parametrized searchItems method
 		isBookFound = searchItems(libraryBooks, bookToSearch);
 
 		if (isBookFound == true)
-			System.out.println("The book is found"); 
+			System.out.println("The book is found");
 		else if (isBookFound == false)
 			System.out.println("The book is not found");
-		
+		// --------------------------------------------------------------
+
 		// This code is to search for a specific member
 		System.out.println("Enter a member name to search for:");
-		memberToSearch = input.next();	
-		isMemberFound = false;	
-			
+		memberToSearch = input.next();
+		isMemberFound = false;
+
 		// Using parametrized searchItems method
 		isMemberFound = searchItems(libraryMembers, memberToSearch);
 
@@ -159,5 +162,7 @@ public class LibrarySystemPhase4 {
 			System.out.println("The member is found");
 		else if (isMemberFound == false)
 			System.out.println("The member is not found");
+		// --------------------------------------------------------------
 	}
+
 }
