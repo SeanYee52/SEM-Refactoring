@@ -51,7 +51,7 @@ class Member implements Sortable {
 class SortingService {
 
     // Quick Sort Implmentation
-	public static <T extends Sortable> void quickSort(ArrayList<T> list, int low, int high) {
+	public <T extends Sortable> void quickSort(ArrayList<T> list, int low, int high) {
 		if (low < high) {
 			int partitionIndex = partition(list, low, high);
 			quickSort(list, low, partitionIndex - 1);
@@ -60,7 +60,7 @@ class SortingService {
 	}
 
     // Partition Helper Method
-	private static <T extends Sortable> int partition(ArrayList<T> list, int low, int high) {
+	private <T extends Sortable> int partition(ArrayList<T> list, int low, int high) {
 		T pivot = list.get(high);
 		int i = low - 1;
 		for (int j = low; j < high; j++) {
@@ -81,7 +81,9 @@ class SortingService {
 }
 
 class SearchingService {
-	public static <T extends Sortable> Boolean binarySearch(ArrayList<T> list, String elementToSearch, int low, int high) {
+
+	// Binary Search Implementation
+	public <T extends Sortable> Boolean binarySearch(ArrayList<T> list, String elementToSearch, int low, int high) {
 		if (low > high) {
 			return false;
 		}
@@ -104,8 +106,8 @@ public class LibrarySystemPhase6 {
 	public static void main(String[] args) {		
 
 		// This code is to add books to the library and sort them
-        SortingService sortingService = new SortingService;
-        SearchingService searchingService = new SearchingService;
+        SortingService sortingService = new SortingService();
+        SearchingService searchingService = new SearchingService();
 		ArrayList<Book> libraryBooks = new ArrayList<Book>();
 		String newBookTitle;
 		String bookToSearch = null;
@@ -169,7 +171,7 @@ public class LibrarySystemPhase6 {
 		isBookFound = false;
 
 		// Using binary search directly
-		isBookFound = searchingService.binarySearch(libraryBooks, 0, libraryBooks.size() - 1);
+		isBookFound = searchingService.binarySearch(libraryBooks, bookToSearch, 0, libraryBooks.size() - 1);
 
 		if (isBookFound == true)
 			System.out.println("The book is found");
@@ -182,7 +184,7 @@ public class LibrarySystemPhase6 {
 		isMemberFound = false;
 
 		// Using binary search directly
-		isMemberFound = searchingService.binarySearch(libraryMembers, 0, libraryMembers.size() - 1);
+		isMemberFound = searchingService.binarySearch(libraryMembers, memberToSearch, 0, libraryMembers.size() - 1);
 
 		if (isMemberFound == true)
 			System.out.println("The member is found");
