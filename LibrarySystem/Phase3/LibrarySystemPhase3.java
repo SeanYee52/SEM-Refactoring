@@ -24,7 +24,7 @@ public class LibrarySystemPhase3 {
 				System.out.println(counter.getTitle());
 			}
 		 //bubble sort--------------------------------------------------
-			SortBooks(libraryBooks);
+			sortBooks(libraryBooks);
 		 //-------------------------------------------------------
 		 System.out.println("The books in the library after sorting are: ");
 		   for(Book counter: libraryBooks){
@@ -48,7 +48,7 @@ public class LibrarySystemPhase3 {
 					System.out.println(counter.getName());
 				}
 			 //bubble sort--------------------------------------------------
-			   SortMembers(libraryMembers);
+			   sortMembers(libraryMembers);
 			 //-------------------------------------------------------
 			 System.out.println("The members in the library after sorting are: ");
 			   for(Member counter: libraryMembers){
@@ -61,7 +61,7 @@ public class LibrarySystemPhase3 {
 			   isBookFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   isBookFound = BookSearch(libraryBooks, bookToSearch);
+		   isBookFound = bookSearch(libraryBooks, bookToSearch);
 		   //------------------------------------------------------------
 		   if (isBookFound == true)
 		       System.out.println("The book is found");
@@ -75,7 +75,7 @@ public class LibrarySystemPhase3 {
 			   isMemberFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   isMemberFound = MemberSearch(libraryMembers, memberToSearch);
+		   isMemberFound = memberSearch(libraryMembers, memberToSearch);
 		   //------------------------------------------------------------
 		   if (isMemberFound == true)
 		       System.out.println("The member is found");
@@ -84,7 +84,7 @@ public class LibrarySystemPhase3 {
 		   //--------------------------------------------------------------
 	}
 
-	public static void SortBooks(ArrayList<Book> list) {
+	public static void sortBooks(ArrayList<Book> list) {
 		boolean sorted = false;
 		Book temp = null;
 		while(!sorted) {
@@ -100,7 +100,7 @@ public class LibrarySystemPhase3 {
 		}
 	}
 
-	public static void SortMembers(ArrayList<Member> list) {
+	public static void sortMembers(ArrayList<Member> list) {
 		boolean sorted = false;
 		Member temp = null;
 		while(!sorted) {
@@ -116,7 +116,7 @@ public class LibrarySystemPhase3 {
 		}
 	}
 
-	public static Boolean BookSearch(ArrayList<Book> list, String elementToSearch){
+	public static Boolean bookSearch(ArrayList<Book> list, String elementToSearch){
 		for (int index = 0; index < list.size(); index++) {
 			if (list.get(index).getTitle().equals(elementToSearch)) {
 				return true;
@@ -125,7 +125,7 @@ public class LibrarySystemPhase3 {
 		return false;
 	}
 
-	public static Boolean MemberSearch(ArrayList<Member> list, String elementToSearch){
+	public static Boolean memberSearch(ArrayList<Member> list, String elementToSearch){
 		for (int index = 0; index < list.size(); index++) {
 			if (list.get(index).getName().equals(elementToSearch)) {
 				return true;

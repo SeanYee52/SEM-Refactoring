@@ -24,7 +24,7 @@ public class LibrarySystemPhase2 {
 				System.out.println(counter);
 			}
 		 //bubble sort--------------------------------------------------
-			SortElements(libraryBooks);
+			sortElements(libraryBooks);
 		 //-------------------------------------------------------
 		 System.out.println("The books in the library after sorting are: ");
 		   for(String counter: libraryBooks){
@@ -48,7 +48,7 @@ public class LibrarySystemPhase2 {
 					System.out.println(counter);
 				}
 			 //bubble sort--------------------------------------------------
-			   SortElements(libraryMembers);
+			   sortElements(libraryMembers);
 			 //-------------------------------------------------------
 			 System.out.println("The members in the library after sorting are: ");
 			   for(String counter: libraryMembers){
@@ -61,7 +61,7 @@ public class LibrarySystemPhase2 {
 			   isBookFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   isBookFound = LinearSearch(libraryBooks, bookToSearch);
+		   isBookFound = linearSearch(libraryBooks, bookToSearch);
 		   //------------------------------------------------------------
 		   if (isBookFound == true)
 		       System.out.println("The book is found");
@@ -75,7 +75,7 @@ public class LibrarySystemPhase2 {
 			   isMemberFound = false;	
 			   
 		   //Linear Search----------------------------------------------
-		   isMemberFound = LinearSearch(libraryMembers, memberToSearch);
+		   isMemberFound = linearSearch(libraryMembers, memberToSearch);
 		   //------------------------------------------------------------
 		   if (isMemberFound == true)
 		       System.out.println("The member is found");
@@ -84,7 +84,7 @@ public class LibrarySystemPhase2 {
 		   //--------------------------------------------------------------
 	}
 
-	public static void SortElements(ArrayList<String> list) {
+	public static void sortElements(ArrayList<String> list) {
 		boolean sorted = false;
 		String temp = null;
 		while(!sorted) {
@@ -100,7 +100,7 @@ public class LibrarySystemPhase2 {
 		}
 	}
 
-	public static Boolean LinearSearch(ArrayList<String> list, String elementToSearch){
+	public static Boolean linearSearch(ArrayList<String> list, String elementToSearch){
 		for (int index = 0; index < list.size(); index++) {
 			if (list.get(index).equals(elementToSearch)) {
 				return true;
