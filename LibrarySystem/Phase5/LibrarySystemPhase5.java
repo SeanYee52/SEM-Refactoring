@@ -116,6 +116,7 @@ public class LibrarySystemPhase5 {
 		}
 
 		System.out.println("The books in the library before sorting are: ");
+		
 		for(Book counter: libraryBooks){
 			System.out.println(counter.getTitle());
 		}
