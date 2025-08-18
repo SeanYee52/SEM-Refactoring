@@ -1,4 +1,4 @@
-package LibrarySystem.BeforeRefactoring;
+package LibrarySystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LibrarySystemBeforeRefactoring {
