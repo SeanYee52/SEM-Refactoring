@@ -95,8 +95,7 @@ public class LibrarySystemPhase5 {
 		}
 	}
 
-	public static void main(String[] args) {		
-
+	public static void main(String[] args) {
 		// This code is to add books to the library and sort them
 		ArrayList<Book> libraryBooks = new ArrayList<Book>();
 		String newBookTitle;

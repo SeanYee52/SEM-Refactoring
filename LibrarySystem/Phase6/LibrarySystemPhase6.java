@@ -50,7 +50,6 @@ class Member implements Sortable {
 
 class SortingService {
 
-    // Quick Sort Implmentation
 	public <T extends Sortable> void quickSort(ArrayList<T> list, int low, int high) {
 		if (low < high) {
 			int partitionIndex = partition(list, low, high);
@@ -59,7 +58,6 @@ class SortingService {
 		}
 	}
 
-    // Partition Helper Method
 	private <T extends Sortable> int partition(ArrayList<T> list, int low, int high) {
 		T pivot = list.get(high);
 		int i = low - 1;
@@ -82,7 +80,6 @@ class SortingService {
 
 class SearchingService {
 
-	// Binary Search Implementation
 	public <T extends Sortable> Boolean binarySearch(ArrayList<T> list, String elementToSearch, int low, int high) {
 		if (low > high) {
 			return false;
@@ -103,8 +100,7 @@ class SearchingService {
 
 public class LibrarySystemPhase6 {
 
-	public static void main(String[] args) {		
-
+	public static void main(String[] args) {
 		// This code is to add books to the library and sort them
         SortingService sortingService = new SortingService();
         SearchingService searchingService = new SearchingService();
@@ -131,8 +127,9 @@ public class LibrarySystemPhase6 {
 			System.out.println(counter.getTitle());
 		}
 
-		// Use instantiated methods from SortingService class ot sort library books.
+		// Use instantiated methods from SortingService class to sort library books.
         sortingService.quickSort(libraryBooks, 0, libraryBooks.size() - 1);
+
 		System.out.println("The books in the library after sorting are: ");
 
 		for (Book counter : libraryBooks) {
@@ -158,8 +155,9 @@ public class LibrarySystemPhase6 {
 			System.out.println(counter.getName());
 		}
 
-		// Use instantiated methods from SortingService class ot sort library books.
+		// Use instantiated methods from SortingService class to sort library members.
         sortingService.quickSort(libraryMembers, 0, libraryMembers.size() - 1);
+
 		System.out.println("The members in the library after sorting are: ");
 
 		for (Member counter : libraryMembers) {
@@ -171,25 +169,27 @@ public class LibrarySystemPhase6 {
 		bookToSearch = input.next();
 		isBookFound = false;
 
-		// Using binary search directly
+		// Use instantiated methods from SearchingService class to search a library book.
 		isBookFound = searchingService.binarySearch(libraryBooks, bookToSearch, 0, libraryBooks.size() - 1);
 
 		if (isBookFound == true)
 			System.out.println("The book is found");
 		else if (isBookFound == false)
 			System.out.println("The book is not found");
+		// --------------------------------------------------------------
 
 		// This code is to search for a specific member
 		System.out.println("Enter a member name to search for:");
 		memberToSearch = input.next();
 		isMemberFound = false;
 
-		// Using binary search directly
+		// Use instantiated methods from SearchingService class to search a library member.
 		isMemberFound = searchingService.binarySearch(libraryMembers, memberToSearch, 0, libraryMembers.size() - 1);
 
 		if (isMemberFound == true)
 			System.out.println("The member is found");
 		else if (isMemberFound == false)
 			System.out.println("The member is not found");
+		// --------------------------------------------------------------
 	}
 }
